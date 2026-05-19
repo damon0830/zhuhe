@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "collections": "Collections",
+    "products": "Products",
+    "our_story": "Our Story",
+    "journal": "Journal",
+    "search": "Search",
+    "account": "Account",
+    "cart": "Cart"
+  },
+  "hero": {
+    "tagline": "Pearls of Distinction",
+    "title_1": "Timeless",
+    "title_accent": "Elegance",
+    "title_2": "From the East",
+    "subtitle": "Discover our curated collection of authentic pearl jewelry, where centuries of tradition meet contemporary design.",
+    "cta_collections": "Explore Collections",
+    "cta_story": "Our Story"
+  },
+  "values": {
+    "title": "The Pearl Essence",
+    "authentic_title": "Authentic Origins",
+    "authentic_desc": "Every pearl is hand-selected from the finest waters, ensuring unparalleled quality and luster.",
+    "craftsmanship_title": "Artisan Craftsmanship",
+    "craftsmanship_desc": "Our master jewelers combine traditional techniques with contemporary design for timeless pieces.",
+    "sustainable_title": "Sustainable Luxury",
+    "sustainable_desc": "Committed to ethical sourcing and environmentally responsible practices across our supply chain."
+  },
+  "newsletter": {
+    "title": "Join Our Circle",
+    "subtitle": "Stay Inspired",
+    "desc": "Be the first to know about new collections, exclusive events, and pearl care insights.",
+    "placeholder": "Your email address",
+    "button": "Subscribe"
+  },
+  "footer": {
+    "tagline": "Discover the timeless elegance of our curated pearl collection. Each piece tells a story of tradition, craftsmanship, and beauty.",
+    "explore": "Explore",
+    "connect": "Connect",
+    "copyright": "© 2026 ZhuHe. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "shipping": "Shipping"
+  }
+}

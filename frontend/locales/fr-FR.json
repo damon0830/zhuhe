@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "collections": "Collections",
+    "products": "Produits",
+    "our_story": "Notre Histoire",
+    "journal": "Journal",
+    "search": "Rechercher",
+    "account": "Compte",
+    "cart": "Panier"
+  },
+  "hero": {
+    "tagline": "Perles de Distinction",
+    "title_1": "Une Élégance",
+    "title_accent": "Intemporelle",
+    "title_2": " venue d'Orient",
+    "subtitle": "Découvrez notre collection curated de bijoux en perles authentiques, où des siècles de tradition rencontrent le design contemporain.",
+    "cta_collections": "Explorer les Collections",
+    "cta_story": "Notre Histoire"
+  },
+  "values": {
+    "title": "L'Essence de la Perle",
+    "authentic_title": "Origines Authentiques",
+    "authentic_desc": "Chaque perle est sélectionnée à la main dans les eaux les plus fines, garantissant une qualité et un éclat inégalés.",
+    "craftsmanship_title": "Artisanat d'Exception",
+    "craftsmanship_desc": "Nos maîtres joailliers allient techniques traditionnelles et design contemporain pour des pièces intemporelles.",
+    "sustainable_title": "Luxe Durable",
+    "sustainable_desc": "Engagés dans un approvisionnement éthique et des pratiques responsables sur l'ensemble de notre chaîne d'approvisionnement."
+  },
+  "newsletter": {
+    "title": "Rejoignez Notre Cercle",
+    "subtitle": "Restez Inspiré",
+    "desc": "Soyez les premiers informés des nouvelles collections, événements exclusifs et conseils d'entretien des perles.",
+    "placeholder": "Votre adresse email",
+    "button": "S'abonner"
+  },
+  "footer": {
+    "tagline": "Découvrez l'élégance intemporelle de notre collection curated de perles. Chaque pièce raconte une histoire de tradition, de savoir-faire et de beauté.",
+    "explore": "Explorer",
+    "connect": "Connexion",
+    "copyright": "© 2026 ZhuHe. Tous droits réservés.",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "shipping": "Livraison"
+  }
+}
