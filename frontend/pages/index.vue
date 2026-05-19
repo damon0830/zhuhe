@@ -2,24 +2,18 @@
   <div>
     <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden">
-      <!-- Background -->
       <div class="absolute inset-0 bg-gradient-to-br from-navy via-navy-500 to-ink">
         <div class="absolute inset-0 pearl-overlay"></div>
       </div>
-
-      <!-- Decorative circles -->
       <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-lake-500/10 blur-3xl"></div>
       <div class="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-lavender-500/10 blur-3xl"></div>
 
-      <!-- Content -->
       <div class="relative text-center px-6 max-w-4xl">
         <p class="text-cream-200 tracking-[0.4em] uppercase text-sm mb-6 animate-fade-in">
           Pearls of Distinction
         </p>
         <h1 class="font-display text-5xl md:text-7xl text-cream-50 mb-8 leading-tight animate-slide-up">
-          Timeless
-          <span class="text-lake-300">Elegance</span>
-          <br />From the East
+          Timeless <span class="text-lake-300">Elegance</span><br />From the East
         </h1>
         <p class="text-cream-200 text-lg mb-10 max-w-2xl mx-auto animate-fade-in">
           Discover our curated collection of authentic pearl jewelry,
@@ -37,7 +31,6 @@
         </div>
       </div>
 
-      <!-- Scroll indicator -->
       <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <svg class="w-6 h-6 text-cream-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -65,25 +58,55 @@
       </div>
     </section>
 
-    <!-- Featured Collections -->
+    <!-- Featured Products -->
     <section class="py-24 bg-cream-100 px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <p class="section-subtitle">Featured Selection</p>
+          <h2 class="section-title">Our Finest Pearls</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div v-for="product in featuredProducts" :key="product.slug"
+               class="group cursor-pointer" @click="navigateTo(`/products/${product.slug}`)">
+            <div class="relative h-80 mb-4 bg-gradient-to-br from-navy-100 to-lavender-100 overflow-hidden">
+              <div class="absolute inset-0 bg-navy/10 group-hover:bg-navy/20 transition-all duration-500"></div>
+              <div class="absolute top-3 right-3 z-10 flex gap-2">
+                <span v-if="product.is_new"
+                  class="bg-lake text-navy text-xs px-3 py-1 font-medium tracking-wider uppercase">New</span>
+                <span v-if="product.is_featured"
+                  class="bg-navy text-cream-50 text-xs px-3 py-1 font-medium tracking-wider uppercase">Featured</span>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-navy/60 to-transparent">
+                <p class="text-cream-200 text-xs tracking-widest uppercase mb-1">{{ product.pearl_type_display }}</p>
+                <h3 class="font-display text-lg text-cream-50">{{ product.name }}</h3>
+                <p class="text-lake-200 font-display text-sm mt-2">
+                  {{ product.is_price_from ? 'From' : '' }} ¥{{ product.base_price.toLocaleString() }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section class="py-24 px-6" v-if="featuredCollections.length">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
           <p class="section-subtitle">Curated Selection</p>
           <h2 class="section-title">Featured Collections</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div v-for="col in collections" :key="col.title"
-            class="relative h-96 overflow-hidden group cursor-pointer">
+          <NuxtLink v-for="col in featuredCollections" :key="col.slug" :to="`/collections/${col.slug}`"
+            class="relative h-96 overflow-hidden group">
             <div class="absolute inset-0 bg-navy/40 group-hover:bg-navy/50 transition-colors duration-500 z-10"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent z-20"></div>
             <div class="absolute bottom-0 left-0 right-0 p-8 z-30">
-              <h3 class="font-display text-2xl text-cream-50 mb-2">{{ col.title }}</h3>
-              <p class="text-cream-200 text-sm">{{ col.desc }}</p>
+              <h3 class="font-display text-2xl text-cream-50 mb-2">{{ col.name }}</h3>
+              <p class="text-cream-200 text-sm">{{ col.subtitle }}</p>
             </div>
-            <!-- Placeholder bg -->
-            <div class="absolute inset-0 bg-gradient-to-br" :class="col.bg"></div>
-          </div>
+            <div class="absolute inset-0 bg-gradient-to-br" :class="col.bg_gradient || 'from-lavender-300 to-lavender-500'"></div>
+          </NuxtLink>
         </div>
       </div>
     </section>
@@ -107,14 +130,27 @@
 </template>
 
 <script setup lang="ts">
+const { featured, listCollections } = useProducts()
+
 const values = [
   { icon: '🦪', title: 'Authentic Origins', desc: 'Every pearl is hand-selected from the finest waters, ensuring unparalleled quality and luster.' },
   { icon: '✨', title: 'Artisan Craftsmanship', desc: 'Our master jewelers combine traditional techniques with contemporary design for timeless pieces.' },
   { icon: '🌿', title: 'Sustainable Luxury', desc: 'Committed to ethical sourcing and environmentally responsible practices across our supply chain.' },
 ]
 
-const collections = [
-  { title: 'Akoya Classics', desc: 'The quintessential Japanese pearl — luminous, perfectly round, eternally elegant.', bg: 'from-lavender-300 to-lavender-500' },
-  { title: 'South Sea Treasures', desc: 'Largest of all cultured pearls, prized for their satiny luster and warm golden hues.', bg: 'from-sandy-300 to-sandy-500' },
-]
+const featuredProducts = ref<Product[]>([])
+const featuredCollections = ref<Collection[]>([])
+
+onMounted(async () => {
+  try {
+    featuredProducts.value = await featured()
+  } catch (e) {
+    console.warn("Could not fetch featured products — backend may be offline")
+  }
+  try {
+    featuredCollections.value = await listCollections(true)
+  } catch (e) {
+    console.warn("Could not fetch collections — backend may be offline")
+  }
+})
 </script>
